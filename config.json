@@ -1,0 +1,5 @@
+{
+    "postgres": {
+        "uri":"postgres://zogyssxjzdgryg:ec8e27187a9d957b05d3a7a3c9487cb41f35de434eb145cfbe26e6244a5ef45b@ec2-79-125-4-72.eu-west-1.compute.amazonaws.com:5432/d8m9rta4fh1hrk"
+    }
+}

@@ -1,0 +1,1 @@
+rest: python3 main.py
