@@ -5,6 +5,7 @@ from sqlalchemy import create_engine
 
 from BLL.Sevices.UserService import UserService
 from BLL.Sevices.ReadConfigSevice import ReadConfigService
+from BLL.Exceptions.WrongNumberException import WrongNumberException
 
 
 class UserView(MethodView):
@@ -34,15 +35,21 @@ class UserView(MethodView):
         return responce_data
 
     def post(self):
-        data = request.json
+        try:
+            data = request.json
 
-        session = sessionmaker(bind=self.engine)()
-        UserService(session).add_user(data["name"], data["surname"], data["phone"],
-                                      data["login"], data["password"])
-        session.commit()
-        session.close()
+            if len(data["phone"]) != 13:
+                raise WrongNumberException("Your number is too long")
 
-        return "User was created!"
+            session = sessionmaker(bind=self.engine)()
+            UserService(session).add_user(data["name"], data["surname"], data["phone"],
+                                          data["login"], data["password"])
+            session.commit()
+            session.close()
+
+            return "User was created!"
+        except WrongNumberException:
+            return "You have to write full number\nExample: +380637894596"
 
     def put(self):
         pass
