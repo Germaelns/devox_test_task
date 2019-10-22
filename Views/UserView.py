@@ -54,6 +54,10 @@ class UserView(MethodView):
             return {
                 "message": "You have to write full number\nExample: +380637894596"
             }
+        except KeyError:
+            return {
+                "message": "Wrong input data"
+            }
 
     def put(self):
         pass

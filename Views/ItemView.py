@@ -6,6 +6,7 @@ from sqlalchemy.exc import IntegrityError
 
 from BLL.Sevices.ItemService import ItemService
 from BLL.Sevices.ReadConfigSevice import ReadConfigService
+from BLL.Exceptions.WrongInputDataException import WrongInputDataException
 
 
 class ItemView(MethodView):
@@ -57,6 +58,10 @@ class ItemView(MethodView):
         except IntegrityError:
             return {
                 "message": "No such user or order"
+            }
+        except KeyError:
+            return {
+                "message": "Wrong input data"
             }
 
     def put(self):

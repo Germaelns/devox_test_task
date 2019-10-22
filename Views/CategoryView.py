@@ -49,6 +49,10 @@ class CategoryView(MethodView):
             return {
                 "message": "No such order"
             }
+        except KeyError:
+            return {
+                "message": "Wrong input data"
+            }
 
     def put(self):
         pass

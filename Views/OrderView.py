@@ -72,6 +72,10 @@ class OrderView(MethodView):
             return {
                 "message": "No such order"
             }
+        except KeyError:
+            return {
+                "message": "Wrong input data"
+            }
 
     def delete(self):
         pass
