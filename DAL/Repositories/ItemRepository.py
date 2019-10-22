@@ -7,12 +7,13 @@ class ItemRepository:
 
         self.session = db_session
 
-    def create_item(self, image: str, title: str, price: float, user_id: int, category_id: int):
+    def create_item(self, image: str, title: str, price: float, user_id: int, category_id: int, order_id: int):
         return self.session.add(Item(image=image,
                                      title=title,
                                      price=price,
                                      user_id=user_id,
-                                     category_id=category_id))
+                                     category_id=category_id,
+                                     order_id=order_id))
 
     def get_items_for_user(self, user_id):
         return self.session.query(Item).filter(Item.user_id == user_id).all()

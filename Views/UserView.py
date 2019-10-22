@@ -47,9 +47,13 @@ class UserView(MethodView):
             session.commit()
             session.close()
 
-            return "User was created!"
+            return {
+                "message": "User was created"
+            }
         except WrongNumberException:
-            return "You have to write full number\nExample: +380637894596"
+            return {
+                "message": "You have to write full number\nExample: +380637894596"
+            }
 
     def put(self):
         pass

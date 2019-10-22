@@ -29,7 +29,8 @@ class ItemView(MethodView):
                 "title": item.title,
                 "price": item.price,
                 "user_id": item.user_id,
-                "category_id": item.category_id
+                "category_id": item.category_id,
+                "order_id": item.order_id
             }
 
             counter += 1
@@ -41,14 +42,22 @@ class ItemView(MethodView):
             data = request.json
 
             session = sessionmaker(bind=self.engine)()
-            ItemService(session).create_item(data["image"], data["title"], data["price"],
-                                             data["user_id"], data["category_id"])
+            ItemService(session).create_item(data["image"],
+                                             data["title"],
+                                             data["price"],
+                                             data["user_id"],
+                                             data["category_id"],
+                                             data["order_id"])
             session.commit()
             session.close()
 
-            return "Item created!"
+            return {
+                "message": "Item created"
+            }
         except IntegrityError:
-            return "No such user!"
+            return {
+                "message": "No such user or order"
+            }
 
     def put(self):
         pass

@@ -42,9 +42,13 @@ class CategoryView(MethodView):
             session.commit()
             session.close()
 
-            return "Category created!"
+            return {
+                "message": "Category created"
+            }
         except IntegrityError:
-            return "No such user!"
+            return {
+                "message": "No such order"
+            }
 
     def put(self):
         pass
