@@ -1,0 +1,18 @@
+{% block content %}
+
+<form method="POST">
+    <table>
+        <tr>
+            <td>Title: </td><td>{{form.title}}</td>
+        </tr>
+        <tr>
+            <td>User ID: </td><td>{{form.user_id}}</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Create category"></td>
+        </tr>
+
+    </table>
+</form>
+
+{% endblock %}

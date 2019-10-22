@@ -1,0 +1,30 @@
+{% block content %}
+
+<form method="POST">
+    <table>
+        <tr>
+            <td>Image: </td><td>{{form.image}}</td>
+        </tr>
+        <tr>
+            <td>Title: </td><td>{{form.title}}</td>
+        </tr>
+        <tr>
+            <td>Price: </td><td>{{form.price}}</td>
+        </tr>
+        <tr>
+            <td>User ID: </td><td>{{form.user_id}}</td>
+        </tr>
+        <tr>
+            <td>Category ID: </td><td>{{form.category_id}}</td>
+        </tr>
+        <tr>
+            <td>Order ID: </td><td>{{form.order_id}}</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Create item"></td>
+        </tr>
+
+    </table>
+</form>
+
+{% endblock %}
