@@ -7,9 +7,10 @@ class ItemService:
 
         self.session = db_session
 
-    def create_item(self, image: str, title: str, price: float, user_id: int, category_id: int):
+    def create_item(self, image: str, title: str, price: float, user_id: int, category_id: int, order_id: int):
         return ItemRepository(self.session).create_item(image=image, title=title, price=price,
-                                                        user_id=user_id, category_id=category_id)
+                                                        user_id=user_id, category_id=category_id,
+                                                        order_id=order_id)
 
     def get_items_for_user(self, user_id):
         return ItemRepository(self.session).get_items_for_user(user_id)
