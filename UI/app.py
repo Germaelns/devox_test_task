@@ -32,7 +32,9 @@ def user():
         }
 
         return requests.post("localhost:5001/users", data=data, headers=headers)
-    return render_template("user.html", form=form)
+
+    users = requests.get('localhost:5001/users')
+    return render_template("user.html", form=form, users=users)
 
 
 @app.route('/category', methods=['GET', 'POST'])

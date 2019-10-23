@@ -1,4 +1,17 @@
+{% extends "base.html" %}
+
 {% block content %}
+
+<table>
+    <tr>
+        <td>Name</td><td>Surname</td><td>Login</td>
+    </tr>
+    {% for user in users %}
+        <tr>
+            <td>{{ user["name"] }}</td><td>{{ user["surname"] }}</td><td>{{ user["login"] }}</td>
+        </tr>
+    {% endfor %}
+</table>
 
 <form method="POST">
     <table>
